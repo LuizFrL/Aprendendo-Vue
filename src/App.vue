@@ -3,20 +3,21 @@
     <div class="row" >
       <b-img id="image" src="./assets/logo.png" class="mx-auto" fluid alt="Responsive image"></b-img>
     </div>
-    <div class="row">
-      <div class="mx-auto">Olá Mundo</div>
-    </div>
+      <FormDo/>
   </div>
 </template>
 
 <script>
+import FormDo from './components/form/FormDo.vue'
 export default {
   name: "app",
-  components: {}
+  components: {
+    FormDo
+  }
 };
 </script>
 
-<style>
+<style scoped>
 #image {
   padding: 10px;
 }
