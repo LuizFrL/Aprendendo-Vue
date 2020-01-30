@@ -11,6 +11,7 @@
 <script>
 import FormDo from "./components/form/FormDo.vue";
 import CoisasParaFazer from "./components/Layout/CoisasParaFazer.vue";
+
 export default {
   name: "app",
   components: {
