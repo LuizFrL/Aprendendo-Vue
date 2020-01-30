@@ -12,7 +12,7 @@
     ></b-form-tags>
     <div class="row">
       <b-button class="col-sm-3 p-2" pill @click="buildTasks" variant="outline-success">
-        <b-icon font-scale="1" class="p-10" icon="check-box" />Adicionar
+        <b-icon font-scale="1" class="p-10" icon="pen" />Adicionar
       </b-button>
       <p class="col-sm-6"></p>
       <b-button class="col-sm-3 p-2" pill @click="clearValue" variant="outline-danger">
@@ -22,9 +22,7 @@
     <p>Value: {{ tasks }}</p>
     <p>Tarefas: {{ allTasks }}</p>
 
-    <div v-for="Task in allTasks" :key="Task.id" class="p-2">
-      <ListaCoisasParaFazer tarefa="Task.tarefa" />
-    </div>
+    <ListaCoisasParaFazer v-for="Task in allTasks" :key="Task.id" :tarefa="Task" class="p-1" />
   </div>
 </template>
 
@@ -46,12 +44,13 @@ export default {
       this.tasks = [];
       document.querySelector("input").focus();
     },
+
     buildTasks() {
       let i = 0;
       this.tasks.forEach(task => {
         i++;
         this.allTasks.push({
-          id: Date.now() - i,
+          id: String(Date.now() - i),
           tarefa: String(task),
           checked: false
         });
@@ -61,3 +60,17 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.slide-fade-enter-active {
+  transition: all 0.3s ease;
+}
+.slide-fade-leave-active {
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active em versões anteriores a 2.1.8 */ {
+  transform: translateX(10px);
+  opacity: 0;
+}
+</style>
